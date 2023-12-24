@@ -125,17 +125,17 @@ function Ex8(values) {
 }
 
 var values = [
-  "dolphin",
+  "black ",
   "1.jpg",
   "100",
-  "elephant",
+  "pink",
   "2.jpg",
   "200",
-  "rabbit",
+  "white",
   "3.jpg",
   "100",
-  "giraffe",
+  "yellow",
   "4.jpg",
   "200"
 ];
-// Ex8(values);
+Ex8(values);
