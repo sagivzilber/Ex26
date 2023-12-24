@@ -9,7 +9,7 @@ function f1() {
   alert(`href: ${href}`);
 }
 
-// f1();
+f1();
 
 function f2() {
   var img = document.getElementById("img1");
@@ -17,7 +17,7 @@ function f2() {
   img.setAttribute("height", "200");
 }
 
-// f2();
+f2();
 
 function f3() {
   var img = document.getElementById("img1");
@@ -27,7 +27,7 @@ function f3() {
   img.setAttribute("width", `${imgWidth * 3}`);
 }
 
-// f3();
+f3();
 
 function f4() {
   var td21 = document.createElement("td");
@@ -41,7 +41,7 @@ function f4() {
   tr2.appendChild(td22);
 }
 
-// f4();
+f4();
 
 function CreateSampleRow() {
   var img = document.createElement("img");
@@ -65,7 +65,7 @@ function CreateSampleRow() {
   table.appendChild(tr3);
 }
 
-// CreateSampleRow();
+CreateSampleRow();
 
 function CreateRow(imgHeight, imgWidth, rowIndex) {
   var img = document.createElement("img");
@@ -91,7 +91,7 @@ function CreateRow(imgHeight, imgWidth, rowIndex) {
   table.appendChild(tr3);
 }
 
-// CreateRow(200, 200, 3);
+CreateRow(200, 200, 3);
 
 function CreateTable(rows) {
   for (var i = 1; i <= rows; i++) {
@@ -99,7 +99,7 @@ function CreateTable(rows) {
   }
 }
 
-// CreateTable(4);
+CreateTable(4);
 
 function Ex8(values) {
   var tr1 = document.createElement("tr");
@@ -139,3 +139,47 @@ var values = [
   "200"
 ];
 Ex8(values);
+
+function CreateCell(src, size) {
+  var cell = document.createElement("td");
+  var img = document.createElement("img");
+  img.setAttribute("src", src);
+  img.setAttribute("height", size);
+  img.setAttribute("width", size);
+  cell.appendChild(img);
+  return cell;
+}
+
+function AddLinkToCell(cell, href, content) {
+  var link = document.createElement("a");
+  link.setAttribute("href", href);
+  link.innerHTML = content;
+  cell.appendChild(link);
+}
+
+function CreateRow2(index, onlyImage) {
+  var row = document.createElement("tr");
+  if (onlyImage == true) {
+    var cell = CreateCell(`images/${index}.jpg`, 100);
+    row.appendChild(cell);
+  } else {
+    var cell = CreateCell(`images/${index}.jpg`, 100);
+    AddLinkToCell(cell, `${index}.html`, `קישור לדף ${index}`);
+    row.appendChild(cell);
+  }
+  return row;
+}
+
+function CreateTableRows(tbl, count) {
+  for (var i = 1; i <= count; i++) {
+    if (i % 2 == 0) {
+      var row = CreateRow2(i, false);
+    } else {
+      var row = CreateRow2(i, true);
+    }
+    tbl.appendChild(row);
+  }
+}
+
+var table4 = document.getElementById("tbl4");
+CreateTableRows(table4, 5);
